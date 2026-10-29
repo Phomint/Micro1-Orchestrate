@@ -17,9 +17,11 @@ Read [`problem_statement.md`](./problem_statement.md) for the complete challenge
 Clone the repository and move into the project directory:
 
 ```bash
-git clone https://github.com/interviewstreet/hackerrank-orchestrate-october26.git
-cd hackerrank-orchestrate-october26
+git clone https://github.com/Phomint/Micro1-Orchestrate.git
+cd Micro1-Orchestrate
 ```
+
+The challenge dataset is not stored in this public repository. Place the participant-provided `dataset/` directory at the repository root before running the agent; do not use organizer-only data.
 
 Start your AI coding tool from the **repository root** so it automatically reads [`AGENTS.md`](./AGENTS.md) and logs your session turns to `log.txt` in the root directory.
 
@@ -37,10 +39,29 @@ Run the starter Python entry point with:
 python3 code/main.py
 ```
 
-The blank template at `dataset/output.csv` is provided as a reference. Your final generated file for submission must be the root-level `output.csv`.
+This deterministic agent has a runnable `DeletionAuditAgent` in `code/main.py`; it loads the participant-facing challenge inputs, exposes `audit_case(request)`, and writes the full output through `DeletionAuditAgent.run(output_path)`. Run from the repository root:
 
+```bash
+python3 code/main.py
+```
 
-## Dataset
+Optional paths:
+
+```bash
+python3 code/main.py --dataset ./dataset --output ./output.csv
+```
+
+Install optional development tools and run tests with:
+
+```bash
+python3 -m pip install -e ".[test]"
+python3 -m pytest
+```
+
+The application uses Python's standard library for CSV, JSON, SQLite, parsing, and output validation. Screenshot OCR is optional and uses the external Tesseract executable when available; Pillow is not required. PDF extraction uses `pdftotext` when installed; otherwise PDFs are skipped rather than guessed. The tool makes no external model calls and sends no data outside the workspace.
+
+The root-level `output.csv` is the generated submission output; `dataset/output.csv` is the blank template. Review [`code/evaluation/evaluation_report.md`](./code/evaluation/evaluation_report.md) and [`code/evaluation/usage_report.md`](./code/evaluation/usage_report.md) for measured checks and limitations. Output contract validation does not establish predictive correctness; public sample metrics are development-set metrics, and hidden-set accuracy is available only from the competition platform.
+
 
 All participant-facing files are in `dataset/`:
 

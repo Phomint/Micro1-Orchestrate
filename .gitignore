@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.tools/
+/dataset/
+.env
+.env.*
+!.env.example
+*.log
+agent-trace.zip
+code.zip

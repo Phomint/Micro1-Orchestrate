@@ -1,0 +1,23 @@
+[project]
+name = "ghost-data-still-exists-agent"
+version = "0.1.0"
+description = "Evidence-grounded deletion audit agent for the HackerRank challenge"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+ghost-data-audit = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.package-dir]
+"" = "code"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
